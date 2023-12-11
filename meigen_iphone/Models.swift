@@ -1,18 +1,28 @@
-//
-//  Models.swift
-//  meigen_iphone
-//
-//  Created by 1460969 on 2023/12/08.
-//
-
-import SwiftUI
-
-struct Models: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct Quote: Decodable {
+    var id: Int
+    var author: String
+    var body: String
 }
 
-#Preview {
-    Models()
+struct WikipediaResponse: Decodable {
+    var query: Query
+}
+
+struct Query: Decodable {
+    var pages: [String: Page]
+}
+
+struct Page: Decodable {
+    var pageid: Int
+    var ns: Int
+    var title: String
+    var extract: String
+}
+
+struct WikipediaImageResponse: Decodable {
+    var thumbnail: Thumbnail?
+}
+
+struct Thumbnail: Decodable {
+    var source: String
 }
